@@ -1,4 +1,5 @@
 import requests
+import pandas as pd
 from queue import Queue
 from watson_developer_cloud import ConversationV1, WatsonException
 
@@ -131,6 +132,91 @@ def copy_dialog_data(root_node=None,
         print(r.text)
         raise Exception('Dialog update failed')
     print('Dialog update success')
+
+def delete_branch_from_csv(conversation_username=None,
+                           conversation_password=None,
+                           version=None, 
+                           workspace_id=None, 
+                           action=None,
+                           root_dir=None):
+    """ Iterate through a CSV file and prune dialog tree from specified root 
+
+    CSV file will be of the following structure:
+    action,id
+
+    valid actions are "REMOVE"
+
+    id will refer to either a node ID or a node title
+
+    CSV file is located at: 
+    {rootdir}/actions/load_dialog_data/{action}/nodes.csv
+
+    Parameters:
+    conversation_username: username for WCS instance
+    conversation_password: password for WCS instance
+    version: version of WCS API
+    workspace_id: workspace_id for WCS instance
+    action: directory containing nodes.csv
+    root_dir: root directory containing actions directory
+    """
+
+    # validate that values are provided
+    args = locals()
+    for key in args:
+        if args[key] is None:
+            raise ValueError("Argument '{}' requires a value".format(key))
+    
+    # setup conversation class
+    conversation = ConversationV1(
+        username=conversation_username,
+        password=conversation_password,
+        version= version
+    )
+    
+    # load data
+    dialog_data = pd.read_csv(
+        '{}/actions/load_dialog_data/{}/nodes.csv'.format(
+            root_dir,
+            action),
+        dtype='str',
+        keep_default_na=False)
+
+    dialog_export = conversation.get_workspace(
+        workspace_id=workspace_id, 
+        export=True)
+
+    # handle removes
+    rows_to_remove = dialog_data[dialog_data['action'] == 'REMOVE']
+    for _ , row in rows_to_remove.iterrows():
+        try:
+            # locate the node to remove
+            node_to_remove = _find_node(
+                row['id'],
+                dialog_export['dialog_nodes'])
+            if node_to_remove is None:
+                print(("Unable to locate node '{}'. "
+                       "It may have already been removed.").format(
+                          row['id']))
+                continue
+            # delete this node
+            conversation.delete_dialog_node(
+                workspace_id=workspace_id,
+                dialog_node=node_to_remove['dialog_node'])
+        except WatsonException as e:
+            try:
+                # check if it even exists
+                conversation.get_dialog_node(
+                    workspace_id=workspace_id,
+                    dialog_node=node_to_remove['dialog_node'])
+                # if it exists and we could not delete it
+                # the operation has failed
+                print("Unable to delete node '{}'. ".format(
+                        row['id']))
+            except:
+                # Node doesn't exist. Nothing to do
+                pass
+    print("delete_branch_from_csv action '{}' complete.".format(action))
+
 
 def _find_node(node_id, dialog_nodes):
     """ Find a specific node in an list of dialog node JSON representations

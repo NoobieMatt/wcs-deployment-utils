@@ -26,7 +26,8 @@ def load_csv_as_entity_data(conversation_username=None,
 
     valid actions are "ADD" or "REMOVE"
 
-    CSV file is located at: {rootdir}/actions/{action}/entities.csv
+    CSV file is located at: 
+    {rootdir}/actions/load_entity_data/{action}/entities.csv
 
     remove statments will be executed first, then adds will be grouped
     and executed as a single statement. adds are additive with existing
@@ -71,7 +72,8 @@ def load_csv_as_entity_data(conversation_username=None,
                       workspace_id=workspace_id,
                       entity_data=entity_data,
                       config_data=config_data)
-    print("load_entity_data action '{}' complete.".format(action))    
+    print(("load_csv_as_entity_data "
+           "action '{}' complete.").format(action))    
 
     
 def copy_entity_data(entity=None,

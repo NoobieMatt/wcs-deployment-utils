@@ -16,7 +16,8 @@ def load_csv_as_intent_data(conversation_username=None,
 
     valid actions are "ADD" or "REMOVE"
 
-    CSV file is located at: {rootdir}/actions/{action}/examples.csv
+    CSV file is located at: 
+    {rootdir}/actions/load_intent_data/{action}/examples.csv
 
     remove statments will be executed first, then adds will be grouped
     and executed as a single statement. adds are additive with existing
@@ -60,7 +61,8 @@ def load_csv_as_intent_data(conversation_username=None,
                       workspace_id=workspace_id,
                       intent_data=intent_data,
                       config_data=config_data)
-    print("load_intent_data action '{}' complete.".format(action))
+    print(("load_csv_as_intent_data "
+           "action '{}' complete.").format(action))
 
 
 def copy_intent_data(intent=None,
@@ -164,7 +166,7 @@ def _load_intent_data(conversation=None, workspace_id=None, intent_data=None,
                                                intent=intent_name)
                     print("Intent '{}' removed".format(intent_name))
                 except WatsonException as e:
-                    print(("Intent '{}' does not exist",
+                    print(("Intent '{}' does not exist"
                            ", nothing to remove").format(intent_name))
     except KeyError as e:
         print('Invalid config.json file')
@@ -209,7 +211,8 @@ def _load_intent_data(conversation=None, workspace_id=None, intent_data=None,
                                                intent=row['intent'],
                                                text=row['example'])
                       # If no error is thrown, the example failed to remove
-                      print("Intent '{}' failed to remove".format(
+                      print(("Intent '{}' failed to remove "
+                             "example {}").format(
                           row['example'],
                           row['intent']))
                   # if error is thrown, the example never existed so
