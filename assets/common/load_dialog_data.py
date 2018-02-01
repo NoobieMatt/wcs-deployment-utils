@@ -22,11 +22,14 @@ def copy_dialog_data(root_node=None,
     target_node is specified as 'root', the branch is inserted as the first
     child of the dialog root
 
+    Any existing nodes with the same name or ID will be deleted
+
     Parameters:
     root_node: ID or title of the root node in source
     target_node: ID or title of the root node in target
     target_insert_as: Default 'sibling'. Location of branch insertion, with 
-        respect to the target root. Valid options are 'sibling' and 'child'
+        respect to the target root. Valid options are 'sibling', 'child' or
+        'root'
     source_username: Username for source WCS instance
     source_password: Password for source WCS instance
     source_workspace: Workspace ID for source WCS instance

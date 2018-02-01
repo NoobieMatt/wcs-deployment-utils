@@ -19,6 +19,8 @@ def load_csv_as_intent_data(conversation_username=None,
     CSV file is located at: 
     {rootdir}/actions/load_csv_as_intent_data/{action}/examples.csv
 
+    an option
+
     remove statments will be executed first, then adds will be grouped
     and executed as a single statement. adds are additive with existing
     data and will not replace
@@ -51,10 +53,17 @@ def load_csv_as_intent_data(conversation_username=None,
             action),
         dtype='str',
         keep_default_na=False)
-    config_data = {}
-    with open('{}/actions/load_csv_as_intent_data/{}/config.json'.format(
-            root_dir, action)) as config_file:    
-        config_data = json.load(config_file)
+    # default values
+    config_data = {
+        "clear_existing": False
+    }
+    try:
+        with open('{}/actions/load_csv_as_intent_data/{}/config.json'.format(
+                root_dir, action)) as config_file:    
+            config_data = json.load(config_file)
+    except:
+        # use defaults
+        pass
     
     # call the function
     _load_intent_data(conversation=conversation,
@@ -78,7 +87,8 @@ def copy_intent_data(intent=None,
 
     Copy intent data in an additive pattern from a source workspace
     to a target workspace. copy is additive with existing
-    data and will not replace existing data
+    data and will not replace existing data unless clear_existing is 
+    specified
 
     parameters:
     intent: name of intent to copy
