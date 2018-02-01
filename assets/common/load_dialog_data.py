@@ -149,7 +149,7 @@ def delete_branch_from_csv(conversation_username=None,
     id will refer to either a node ID or a node title
 
     CSV file is located at: 
-    {rootdir}/actions/load_dialog_data/{action}/nodes.csv
+    {rootdir}/actions/delete_branch_from_csv/{action}/nodes.csv
 
     Parameters:
     conversation_username: username for WCS instance
@@ -175,7 +175,7 @@ def delete_branch_from_csv(conversation_username=None,
     
     # load data
     dialog_data = pd.read_csv(
-        '{}/actions/load_dialog_data/{}/nodes.csv'.format(
+        '{}/actions/delete_branch_from_csv/{}/nodes.csv'.format(
             root_dir,
             action),
         dtype='str',

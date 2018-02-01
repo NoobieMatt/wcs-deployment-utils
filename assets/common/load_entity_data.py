@@ -27,7 +27,7 @@ def load_csv_as_entity_data(conversation_username=None,
     valid actions are "ADD" or "REMOVE"
 
     CSV file is located at: 
-    {rootdir}/actions/load_entity_data/{action}/entities.csv
+    {rootdir}/actions/load_csv_as_entity_data/{action}/entities.csv
 
     remove statments will be executed first, then adds will be grouped
     and executed as a single statement. adds are additive with existing
@@ -56,14 +56,14 @@ def load_csv_as_entity_data(conversation_username=None,
     
     # load data
     entity_data = pd.read_csv(
-        '{}/actions/load_entity_data/{}/entities.csv'.format(
+        '{}/actions/load_csv_as_entity_data/{}/entities.csv'.format(
             root_dir, 
             action),
         dtype='str',
         keep_default_na=False
         )
     config_data = {}
-    with open('{}/actions/load_entity_data/{}/config.json'.format(
+    with open('{}/actions/load_csv_as_entity_data/{}/config.json'.format(
             root_dir, action)) as config_file:
         config_data = json.load(config_file)
 
