@@ -14,7 +14,7 @@ These are particularly useful if you need to build or apply changes to a set of 
 These scripts are designed around a loosely enforced directory structure. In general, the following directory structure is recommended for these scripts:
 
 ```
-Utility root                       code to conversation root
+Utility root
 |
 |--- common                        common script functions
 |   |   load_intent_data.py        common script function implementation
