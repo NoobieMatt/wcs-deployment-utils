@@ -19,11 +19,16 @@ def load_csv_as_intent_data(conversation_username=None,
     CSV file is located at: 
     {rootdir}/actions/load_csv_as_intent_data/{action}/examples.csv
 
-    an option
+    an optional config file is located at:
+    {rootdir}/actions/load_csv_as_intent_data/{action}/config.json
+
+    this config file can specify a single configuration option at the
+    moment, 'clear_existing': (Boolean)
 
     remove statments will be executed first, then adds will be grouped
     and executed as a single statement. adds are additive with existing
-    data and will not replace
+    data and will not replace existing data unless the 'clear_existing'
+    option is True
 
     parameters:
     conversation_username: username for WCS instance
