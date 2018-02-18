@@ -65,10 +65,10 @@ A sample composite script is included in the `assets` directory
 Copy a branch of dialog from a source workspace to a target workspace.
 
 Default insert is 'sibling' which inserts the branch as the immediate
-sibling of the target node. Alternatively, 'child' can be specified
-so that the branch is inserted as the first child of the node. If
-`target_node` is specified as 'root', the branch is inserted as the first
-child of the dialog root
+sibling of the target node. Alternatively, 'child' or 'last_child' can be 
+specified so that the branch is inserted as the first or last child of the
+node. If `target_node` is specified as 'root', the branch is inserted as 
+the first child of the dialog root
 
 Any existing nodes with the same name or ID will be deleted
 
@@ -84,6 +84,11 @@ Dialog Root
         |<-(insert as child)
         |
         | Existing Child Node
+        |
+        ...
+        |<-(insert as last child)
+        |
+        | anything_else
 |
 |<-(insert as sibling)
 ...

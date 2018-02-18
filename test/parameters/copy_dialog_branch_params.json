@@ -1,0 +1,134 @@
+[
+  {
+      "name": "child of 1",
+      "target_node": "1",
+      "target_insert_as": "child",
+      "expected_parent": "1",
+      "expected_previous_sibling": null,
+      "displaced": null,
+      "jump_to_expected_parent": null,
+      "jump_to_expected_previous_sibling": "3",
+      "displaced_jump_to": "Anything else"
+  },
+  {
+    "name": "last child of 1",
+    "target_node": "1",
+    "target_insert_as": "last_child",
+    "expected_parent": "1",
+    "expected_previous_sibling": null,
+    "displaced": null,
+    "jump_to_expected_parent": null,
+    "jump_to_expected_previous_sibling": "3",
+    "displaced_jump_to": "Anything else"
+  },
+  {
+    "name": "child of 2",
+    "target_node": "2",
+    "target_insert_as": "child",
+    "expected_parent": "2",
+    "expected_previous_sibling": null,
+    "displaced": "2_1",
+    "jump_to_expected_parent": null,
+    "jump_to_expected_previous_sibling": "3",
+    "displaced_jump_to": "Anything else"
+  },
+  {
+    "name": "last child of 2",
+    "target_node": "2",
+    "target_insert_as": "last_child",
+    "expected_parent": "2",
+    "expected_previous_sibling": "2_2",
+    "displaced": null,
+    "jump_to_expected_parent": null,
+    "jump_to_expected_previous_sibling": "3",
+    "displaced_jump_to": "Anything else"
+  },
+  {
+    "name": "sibling of 2_1",
+    "target_node": "2_1",
+    "target_insert_as": "sibling",
+    "expected_parent": "2",
+    "expected_previous_sibling": "2_1",
+    "displaced": "2_2",
+    "jump_to_expected_parent": null,
+    "jump_to_expected_previous_sibling": "3",
+    "displaced_jump_to": "Anything else"
+  },
+  {
+    "name": "sibling of 2_2",
+    "target_node": "2_2",
+    "target_insert_as": "sibling",
+    "expected_parent": "2",
+    "expected_previous_sibling": "2_2",
+    "displaced": null,
+    "jump_to_expected_parent": null,
+    "jump_to_expected_previous_sibling": "3",
+    "displaced_jump_to": "Anything else"
+  },
+  {
+    "name": "child of 3",
+    "target_node": "3",
+    "target_insert_as": "child",
+    "expected_parent": "3",
+    "expected_previous_sibling": null,
+    "displaced": "3_1",
+    "jump_to_expected_parent": null,
+    "jump_to_expected_previous_sibling": "3",
+    "displaced_jump_to": "Anything else"
+  },
+  {
+    "name": "last child of 3",
+    "target_node": "3",
+    "target_insert_as": "last_child",
+    "expected_parent": "3",
+    "expected_previous_sibling": "3_3",
+    "displaced": null,
+    "jump_to_expected_parent": null,
+    "jump_to_expected_previous_sibling": "3",
+    "displaced_jump_to": "Anything else"
+  },
+  {
+    "name": "sibling of 3_1",
+    "target_node": "3_1",
+    "target_insert_as": "sibling",
+    "expected_parent": "3",
+    "expected_previous_sibling": "3_1",
+    "displaced": "3_2",
+    "jump_to_expected_parent": null,
+    "jump_to_expected_previous_sibling": "3",
+    "displaced_jump_to": "Anything else"
+  },
+  {
+    "name": "sibling of 3_3",
+    "target_node": "3_3",
+    "target_insert_as": "sibling",
+    "expected_parent": "3",
+    "expected_previous_sibling": "3_3",
+    "displaced": null,
+    "jump_to_expected_parent": null,
+    "jump_to_expected_previous_sibling": "3",
+    "displaced_jump_to": "Anything else"
+  },
+  {
+    "name": "child of root",
+    "target_node": "root",
+    "target_insert_as": "child",
+    "expected_parent": null,
+    "expected_previous_sibling": null,
+    "displaced": "welcome",
+    "jump_to_expected_parent": null,
+    "jump_to_expected_previous_sibling": "3",
+    "displaced_jump_to": "Anything else"
+  },
+  {
+    "name": "last child of root",
+    "target_node": "root",
+    "target_insert_as": "last_child",
+    "expected_parent": null,
+    "expected_previous_sibling": "3",
+    "displaced": "get name",
+    "jump_to_expected_parent": null,
+    "jump_to_expected_previous_sibling": "order a pizza",
+    "displaced_jump_to": "Anything else"
+  }
+]

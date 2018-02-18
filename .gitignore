@@ -104,3 +104,6 @@ venv.bak/
 .mypy_cache/
 
 _credentials.py
+.vscode
+.personal
+test/config/test_credentials.json
