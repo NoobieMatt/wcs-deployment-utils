@@ -8,6 +8,13 @@ These are particularly useful if you need to build or apply changes to a set of 
 2. You want to merge entity definitions from one workspace to another without overwriting existing entity components
 3. You want to build a workspace as a set of modular components. (Workspace 1 uses modules A and C, but workspace 2 uses modules B and C)
 
+## Get Started
+
+To install:
+
+`pip install watson-deployment-utils`
+
+Then import the library into your python project and use
 
 ## Included Functions
 
@@ -74,6 +81,8 @@ These options are summarized below
 **Example**:
 
 ```
+from wcs_deployment_utils.dialog import copy_dialog_data
+
 _, projection = copy_dialog_branch(
         root_node='order a pizza',
         target_node='root',
@@ -172,6 +181,8 @@ id will refer to either a node ID or a node title
 **Example**:
 
 ```
+from wcs_deployment_utils.dialog import delete_branch_from_csv
+
 deleted, not_found = delete_branch_from_csv(
     conversation_username=CONVERSATION_USERNAME,
     conversation_password=CONVERSATION_PASSWORD,
@@ -185,9 +196,9 @@ deleted, not_found = delete_branch_from_csv(
 
 Module: `wcs_deployment_utils.intents.copy_intent_data`
 
-Copy intent data from a WCS workspace
+Copy intent data from a WCS workspace to a target workspace.
 
-Copy intent data in an additive pattern from a source workspace to a target workspace. copy is additive with existing data and will not replace existing data unless clear_existing is specified
+Copy intent data in an additive pattern from a source workspace to a target workspace. Copy is additive with existing data and will not replace existing data unless clear_existing is specified
 
 **parameters**:
 
@@ -214,6 +225,8 @@ Copy intent data in an additive pattern from a source workspace to a target work
 **Example**:
 
 ```
+from wcs_deployment_utils.intents import copy_intent_data
+
 copy_intent_data(
     intent='order_pizza',
     source_username=CONVERSATION_USERNAME,
@@ -231,7 +244,7 @@ copy_intent_data(
 
 Module: `wcs_deployment_utils.intents.load_csv_as_intent_data`
 
-Load intent data from a CSV file
+Load intent data from a CSV file to a target workspace
 
 CSV file will be of the following structure:
     
@@ -260,6 +273,8 @@ remove statments will be executed first, then adds will be grouped and executed 
 **Example**:
 
 ```
+from wcs_deployment_utils.intents import load_csv_as_intent_data
+
 load_csv_as_intent_data(
     conversation_username=CONVERSATION_USERNAME,
     conversation_password=CONVERSATION_PASSWORD,
@@ -274,7 +289,7 @@ load_csv_as_intent_data(
 
 `wcs_deployment_utils.entities.copy_entity_data`
 
-Copy entity data from a WCS workspace
+Copy entity data from a WCS workspace to a target workspace
 
 Copy entity data in an additive pattern from a source workspace to a target workspace. copy is additive with existing data and will not replace existing data
 
@@ -303,6 +318,8 @@ Copy entity data in an additive pattern from a source workspace to a target work
 **Example**:
 
 ```
+from wcs_deployment_utils.entities import copy_entity_data
+
 copy_entity_data(
     entity='pizza_topping',
     source_username=CONVERSATION_USERNAME,
@@ -320,7 +337,7 @@ copy_entity_data(
 
 Module: `wcs_deployment_utils.entities.load_csv_as_entity_data`
 
-Load entity data from a CSV file
+Load entity data from a CSV file to a target workspace
 
 Currently can only handle synonym values
 
@@ -351,6 +368,8 @@ remove statments will be executed first, then adds will be grouped and executed 
 **Example**:
 
 ```
+from wcs_deployment_utils.entities import load_csv_as_entity_data
+
 load_csv_as_entity_data(
     conversation_username=CONVERSATION_USERNAME,
     conversation_password=CONVERSATION_PASSWORD,
@@ -363,7 +382,7 @@ load_csv_as_entity_data(
 
 ### get\_and\_backup\_workspace
 
-Module: `wcs_deployment_utils.entities.get_and_backup_workspace`
+Module: `wcs_deployment_utils.util.get_and_backup_workspace`
 
 Gets an export of a workspace and stores it locally
 
@@ -385,6 +404,8 @@ Gets an export of a workspace and stores it locally
   
 **Example**:
 ```
+from wcs_deployment_utils.util import get_and_backup_workspace
+
 export = get_and_backup_workspace(
     username=CONVERSATION_USERNAME,
     password=CONVERSATION_PASSWORD,
@@ -392,8 +413,20 @@ export = get_and_backup_workspace(
     version=VERSION,
     export_path='backup/ex5.json')
 ```
+
+## Testing
+
+Testing requires `pytest`. 
+
+To execute tests against mock data: `python -m pytest -m mock -v`
+
+To execute tests against live data: `python -m pytest -m live -v`
+
+To execute all tests: `python -m pytest -v`
+
+Live tests will require that credentials are supplied in `test/config/test_credentials.json`. A sample file is provided.
+
 ## Planned Roadmap
 
-1. Make available and consumable through `pip`
-2. Improve performance and reporting of intents and entities operations
-3. Make text based representation of a WCS workspace a standalone function
+1. Improve performance and reporting of intents and entities operations
+2. Make text based representation of a WCS workspace a standalone function
