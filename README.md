@@ -41,22 +41,33 @@ These options are summarized below
     ...
 ```
 parameters:
+
 `root_node`: ID or title of the root node in source
+
 `target_node`: ID or title of the root node in target
-`target_insert_as`: Default 'child'. Location of branch insertion, with
-    respect to the target node. valid options ['child', 'last_child'
-    or 'sibling']
+
+`target_insert_as`: Default 'child'. Location of branch insertion, with respect to the target node. valid options ['child', 'last_child' or 'sibling']
+
 `source_username`: Username for source WCS instance
+
 `source_password`: Password for source WCS instance
+
 `source_workspace`: Workspace ID for source WCS instance
+
 `target_username`: Username for target WCS instance
+
 `target_password`: Password for target WCS instance
+
 `target_workspace`: Workspace ID for target WCS instance
+
 `version`: WCS API version
+
 `target_backup_file`: write a backup of target workspace to this file
 
 returns:
+
 `target_nodes`: the root node of the projected target tree
+
 `projected`: a string representation of the projected tree
 
 
@@ -139,15 +150,23 @@ valid actions are "REMOVE"
 id will refer to either a node ID or a node title
 
 parameters:
+
 `conversation_username`: username for WCS instance
+
 `conversation_password`: password for WCS instance
+
 `version`: version of WCS API
+
 `workspace`: workspace for WCS instance
+
 `csv_file`: csv file containing branches to remove
+
 `target_backup_file`: backup workspace at this path
 
 returns:
+
 `nodes_removed`: list of (identifier, id) s of nodes removed
+
 `nodes_not_existing`: list of identifiers of nodes not found in target
 
 Example:
@@ -171,15 +190,25 @@ Copy intent data from a WCS workspace
 Copy intent data in an additive pattern from a source workspace to a target workspace. copy is additive with existing data and will not replace existing data unless clear_existing is specified
 
 parameters:
+
 `intent`: name of intent to copy
+
 `source_username`: username for source WCS instance
+
 `source_password`: password for source WCS instance
+
 `source_workspace`: workspace id for source WCS instance
+
 `target_username`: username for target WCS instance
+
 `target_password`: password for target WCS instance
+
 `target_workspace`: workspace id for target WCS instance
+
 `version`: version of WCS instances
+
 `clear_existing`: boolean to clear existing intent data from target
+
 `target_backup_file`: backup existing target workspace to this file
 
 Example:
@@ -213,12 +242,19 @@ valid actions are "ADD" or "REMOVE"
 remove statments will be executed first, then adds will be grouped and executed as a single statement. adds are additive with existing data and will not replace existing data unless the 'clear_existing' option is True
 
 parameters:
+
 `conversation_username`: username for WCS instance
+
 `conversation_password`: password for WCS instance
+
 `version`: version of WCS API
+
 `workspace`: workspace_id for WCS instance
+
 `csv_file`: CSV file containing data
+
 `clear_existing`: if true, any specified intents that exist will be cleared
+
 `target_backup_file`: backup workspace to this file before making changes
 
 Example:
@@ -243,15 +279,25 @@ Copy entity data from a WCS workspace
 Copy entity data in an additive pattern from a source workspace to a target workspace. copy is additive with existing data and will not replace existing data
 
 parameters:
+
 `entity`: name of entity to copy
+
 `source_username`: username for source WCS instance
+
 `source_password`: password for source WCS instance
+
 `source_workspace`: workspace id for source WCS instance
+
 `target_username`: username for target WCS instance
+
 `target_password`: password for target WCS instance
+
 `target_workspace`: workspace id for target WCS instance
+
 `version`: version of WCS instances
+
 `clear_existing`: boolean to clear existing intent data from target
+
 `target_backup_file`: backup existing target workspace to this file
 
 Example:
@@ -287,12 +333,19 @@ valid actions are "ADD" or "REMOVE"
 remove statments will be executed first, then adds will be grouped and executed as a single statement. adds are additive with existing data and will not replace existing data unless the 'clear_existing' option is True
 
 parameters:
+
 `conversation_username`: username for WCS instance
+
 `conversation_password`: password for WCS instance
+
 `version`: version of WCS API
+
 `workspace`: workspace_id for WCS instance
+
 `csv_file`: CSV file containing data
+
 `clear_existing`: if true, any specified intents that exist will be cleared
+
 `target_backup_file`: backup workspace to this file before making changes
 
 Example:
@@ -315,13 +368,19 @@ load_csv_as_entity_data(
 Gets an export of a workspace and stores it locally
 
 parameters:
+
 `username`: WCS username
+
 `password`: WCS password
+
 `workspace`: WCS workspace id
+
 `version`: WCS API version
+
 `export_path`: store export at this path
 
 returns
+
 `export`: dict representation of WCS workspace
   
 Example:
