@@ -13,7 +13,7 @@ These are particularly useful if you need to build or apply changes to a set of 
 
 ### copy\_dialog\_data
 
-`wcs_deployment_utils.dialog.copy_dialog_data`
+Module: `wcs_deployment_utils.dialog.copy_dialog_data`
 
 Copy a branch of dialog from a source workspace to a target workspace.
 
@@ -40,7 +40,7 @@ These options are summarized below
     |
     ...
 ```
-parameters:
+**parameters**:
 
 `root_node`: ID or title of the root node in source
 
@@ -64,14 +64,14 @@ parameters:
 
 `target_backup_file`: write a backup of target workspace to this file
 
-returns:
+**returns**:
 
 `target_nodes`: the root node of the projected target tree
 
 `projected`: a string representation of the projected tree
 
 
-Example:
+**Example**:
 
 ```
 _, projection = copy_dialog_branch(
@@ -135,7 +135,7 @@ root
 
 ### delete\_branch\_from\_csv
 
-`wcs_deployment_utils.dialog.delete_branch_from_csv`
+Module: `wcs_deployment_utils.dialog.delete_branch_from_csv`
 
 Iterate through a CSV file and prune dialog tree
 
@@ -149,7 +149,7 @@ valid actions are "REMOVE"
 
 id will refer to either a node ID or a node title
 
-parameters:
+**parameters**:
 
 `conversation_username`: username for WCS instance
 
@@ -163,13 +163,13 @@ parameters:
 
 `target_backup_file`: backup workspace at this path
 
-returns:
+**returns**:
 
 `nodes_removed`: list of (identifier, id) s of nodes removed
 
 `nodes_not_existing`: list of identifiers of nodes not found in target
 
-Example:
+**Example**:
 
 ```
 deleted, not_found = delete_branch_from_csv(
@@ -183,13 +183,13 @@ deleted, not_found = delete_branch_from_csv(
 
 ### copy\_intent\_data
 
-`wcs_deployment_utils.intents.copy_intent_data`
+Module: `wcs_deployment_utils.intents.copy_intent_data`
 
 Copy intent data from a WCS workspace
 
 Copy intent data in an additive pattern from a source workspace to a target workspace. copy is additive with existing data and will not replace existing data unless clear_existing is specified
 
-parameters:
+**parameters**:
 
 `intent`: name of intent to copy
 
@@ -211,7 +211,7 @@ parameters:
 
 `target_backup_file`: backup existing target workspace to this file
 
-Example:
+**Example**:
 
 ```
 copy_intent_data(
@@ -229,7 +229,7 @@ copy_intent_data(
 
 ### load\_csv\_as\_intent\_data
 
-`wcs_deployment_utils.intents.load_csv_as_intent_data`
+Module: `wcs_deployment_utils.intents.load_csv_as_intent_data`
 
 Load intent data from a CSV file
 
@@ -241,7 +241,7 @@ valid actions are "ADD" or "REMOVE"
 
 remove statments will be executed first, then adds will be grouped and executed as a single statement. adds are additive with existing data and will not replace existing data unless the 'clear_existing' option is True
 
-parameters:
+**parameters**:
 
 `conversation_username`: username for WCS instance
 
@@ -257,7 +257,7 @@ parameters:
 
 `target_backup_file`: backup workspace to this file before making changes
 
-Example:
+**Example**:
 
 ```
 load_csv_as_intent_data(
@@ -278,7 +278,7 @@ Copy entity data from a WCS workspace
 
 Copy entity data in an additive pattern from a source workspace to a target workspace. copy is additive with existing data and will not replace existing data
 
-parameters:
+**parameters**:
 
 `entity`: name of entity to copy
 
@@ -300,7 +300,7 @@ parameters:
 
 `target_backup_file`: backup existing target workspace to this file
 
-Example:
+**Example**:
 
 ```
 copy_entity_data(
@@ -318,7 +318,7 @@ copy_entity_data(
 
 ### load\_csv\_as\_entity\_data
 
-`wcs_deployment_utils.entities.load_csv_as_entity_data`
+Module: `wcs_deployment_utils.entities.load_csv_as_entity_data`
 
 Load entity data from a CSV file
 
@@ -332,7 +332,7 @@ valid actions are "ADD" or "REMOVE"
 
 remove statments will be executed first, then adds will be grouped and executed as a single statement. adds are additive with existing data and will not replace existing data unless the 'clear_existing' option is True
 
-parameters:
+**parameters**:
 
 `conversation_username`: username for WCS instance
 
@@ -348,7 +348,7 @@ parameters:
 
 `target_backup_file`: backup workspace to this file before making changes
 
-Example:
+**Example**:
 
 ```
 load_csv_as_entity_data(
@@ -363,11 +363,11 @@ load_csv_as_entity_data(
 
 ### get\_and\_backup\_workspace
 
-`wcs_deployment_utils.entities.get_and_backup_workspace`
+Module: `wcs_deployment_utils.entities.get_and_backup_workspace`
 
 Gets an export of a workspace and stores it locally
 
-parameters:
+**parameters**:
 
 `username`: WCS username
 
@@ -379,11 +379,11 @@ parameters:
 
 `export_path`: store export at this path
 
-returns
+**returns**:
 
 `export`: dict representation of WCS workspace
   
-Example:
+**Example**:
 ```
 export = get_and_backup_workspace(
     username=CONVERSATION_USERNAME,
