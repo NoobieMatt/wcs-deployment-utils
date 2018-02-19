@@ -246,7 +246,7 @@ def copy_dialog_branch(
         target_workspace,
         [x.node for x in LevelOrderIter(target_nodes) \
             if x.id is not None])
-    print('\n\ndialog update complete')
+    print('dialog update complete')
 
     # projected rendering of tree
     projected = anytree.RenderTree(

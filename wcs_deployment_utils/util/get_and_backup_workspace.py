@@ -28,6 +28,9 @@ def get_and_backup_workspace(username: str = None,
     workspace: WCS workspace id
     version: WCS API version
     export_path: store export at this path
+
+    returns
+    export: dict representation of WCS workspace
     """
     # build Conversation SDK object
     conv = ConversationV1(
@@ -43,7 +46,8 @@ def get_and_backup_workspace(username: str = None,
 
     if export_path is not None:
         # make the directories if needed
-        makedirs(path.dirname(export_path), exist_ok=True)
+        if path.dirname(export_path):
+            makedirs(path.dirname(export_path), exist_ok=True)
         with open(export_path, mode='w') as export_file:
             json.dump(export, export_file)
 
