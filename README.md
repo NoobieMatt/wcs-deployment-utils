@@ -78,7 +78,7 @@ These options are summarized below
 `projected`: a string representation of the projected tree
 
 
-**Example**:
+**example**:
 
 ```
 from wcs_deployment_utils.dialog import copy_dialog_data
@@ -139,6 +139,54 @@ root
 │           ├── event_handler - @sys-person
 │           └── event_handler
 └── Anything else
+```
+
+
+### generate_wcs_diagram
+
+Module: `wcs_deployment_utils.dialog.generate_wcs_diagram`
+
+Generates a compact, text represation of a WCS dialog.
+
+```
+root
+├── welcome
+├── 1 (jumps to: 3)
+├── 2
+│   ├── 2_1
+│   └── 2_2
+├── 3
+│   ├── 3_1
+│   ├── 3_2
+│   └── 3_3
+└── Anything else
+```
+
+**parameters**:
+
+`conversation_username`: WCS instance username
+
+`conversation_password`: WCS instance password
+
+`version`: WCS API version
+
+`workspace`: WCS instance workspace
+
+**returns**:
+
+`projection`: a string representation of the WCS workspace
+
+**example**:
+
+```
+from wcs_deployment_utils.dialog import generate_wcs_diagram
+
+projection = generate_wcs_diagram(
+    conversation_username=CONVERSATION_USERNAME,
+    conversation_password=CONVERSATION_PASSWORD,
+    version=VERSION,
+    workspace=WORKSPACE_ID
+)
 ```
 
 
@@ -222,7 +270,7 @@ Copy intent data in an additive pattern from a source workspace to a target work
 
 `target_backup_file`: backup existing target workspace to this file
 
-**Example**:
+**example**:
 
 ```
 from wcs_deployment_utils.intents import copy_intent_data
@@ -270,7 +318,7 @@ remove statments will be executed first, then adds will be grouped and executed 
 
 `target_backup_file`: backup workspace to this file before making changes
 
-**Example**:
+**example**:
 
 ```
 from wcs_deployment_utils.intents import load_csv_as_intent_data
@@ -315,7 +363,7 @@ Copy entity data in an additive pattern from a source workspace to a target work
 
 `target_backup_file`: backup existing target workspace to this file
 
-**Example**:
+**example**:
 
 ```
 from wcs_deployment_utils.entities import copy_entity_data
@@ -365,7 +413,7 @@ remove statments will be executed first, then adds will be grouped and executed 
 
 `target_backup_file`: backup workspace to this file before making changes
 
-**Example**:
+**example**:
 
 ```
 from wcs_deployment_utils.entities import load_csv_as_entity_data
@@ -402,7 +450,7 @@ Gets an export of a workspace and stores it locally
 
 `export`: dict representation of WCS workspace
   
-**Example**:
+**example**:
 ```
 from wcs_deployment_utils.util import get_and_backup_workspace
 

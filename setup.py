@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='wcs-deployment-utils',
-    version='0.0.3',
+    version='0.0.4',
     author='Paul Thoresen',
     author_email='pthoresen@us.ibm.com',
     url='https://github.com/with-watson/wcs-deployment-utils',
@@ -24,13 +24,15 @@ setup(
 
         Included functions are:
 
-        -wcs_deployment_utils.dialog.copy_dialog_data: Copy a branch of dialog from a source workspace to a target workspace.
+        -wcs_deployment_utils.dialog.copy_dialog_data: Copy a branch of dialog from a source workspace to a target workspace
+        -wcs_deployment_utils.dialog.generate_wcs_diagram: Generates a string representation of target workspace dialog tree
         -wcs_deployment_utils.dialog.delete_branch_from_csv: Iterate through a CSV file and prune dialog tree
-        -wcs_deployment_utils.intents.copy_intent_data: Copy intent data from a WCS workspace to a target workspace.
-        -wcs_deployment_utils.intents.load_csv_as_intent_data: Load intent data from a CSV file to a target workspace.
+        -wcs_deployment_utils.intents.copy_intent_data: Copy intent data from a WCS workspace to a target workspace
+        -wcs_deployment_utils.intents.load_csv_as_intent_data: Load intent data from a CSV file to a target workspace
         -wcs_deployment_utils.entities.copy_entity_data: Copy entity data from a WCS workspace to a target workspace
         -wcs_deployment_utils.entities.load_csv_as_entity_data: Load entity data from a CSV file to a target workspace
         -wcs_deployment_utils.util.get_and_backup_workspace: Gets an export of a workspace and stores it locally
+
 
         """,
     packages=find_packages(exclude=["test"]),
